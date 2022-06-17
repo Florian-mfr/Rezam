@@ -19,7 +19,6 @@ export default abstract class BaseController {
       const results = await models[this.modelName].findAll({
         where: { account: user.account }
       })
-      if (!results?.length) return res.status(404).json({error: `${this.modelName}s not found`})
       return res.status(200).json({results})
     } catch (err) {
       return res.status(500).json({message: `error find ${this.modelName}s`, error: err})
@@ -62,7 +61,7 @@ export default abstract class BaseController {
     const user = this.JWT.parseJwt(req.headers.authorization)
     if (!['ADMIN', 'SUPERADMIN'].includes(user.role)) return res.status(403).json({error: `role admin is required to put ${this.modelName}`})
 
-    let data = new this.Model(req.body)
+    const data = new this.Model(req.body)
 
     for (const [key, value] of Object.entries(req.body)) {
       if (!(key in data)) return res.status(400).json({error: `invalid payload to put ${this.modelName}`})
@@ -123,7 +122,7 @@ export default abstract class BaseController {
     try {
       await models[this.Model].destroy({where: { id: id } })
     } catch (err) {
-      return res.status(500).json({message: `error find ${this.Model}`, error: err})
+      return res.status(500).json({message: `error delete ${this.Model}`, error: err})
     }
     return res.status(204).json({success: `${this.Model} successfully deleted`})
   }

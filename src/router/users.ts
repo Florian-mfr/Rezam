@@ -23,7 +23,7 @@ export default class UsersController extends BaseController {
     this.router.get('/users', this.getAllModel)
     this.router.get('/users/:id', this.getOneModel)
     this.router.post('/users/register', validate(this.validation.getValidationSchema()), this.register);
-    this.router.post('/users/login', validate(this.validation.getValidationSchema()), this.login);
+    this.router.post('/users/login', this.login);
   }
  
   private async register (req: Request, res: Response) {

@@ -33,7 +33,7 @@ class UsersController extends _1.default {
         this.router.get('/users', this.getAllModel);
         this.router.get('/users/:id', this.getOneModel);
         this.router.post('/users/register', (0, express_validation_1.validate)(this.validation.getValidationSchema()), this.register);
-        this.router.post('/users/login', (0, express_validation_1.validate)(this.validation.getValidationSchema()), this.login);
+        this.router.post('/users/login', this.login);
     }
     register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {

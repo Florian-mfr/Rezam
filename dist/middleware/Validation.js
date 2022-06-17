@@ -15,7 +15,7 @@ class Validation {
                         .required(),
                     account: express_validation_1.Joi.string(),
                     role: express_validation_1.Joi.string()
-                        .valid('ADMIN', 'WAITER', 'COOK')
+                        .valid('ADMIN', 'WAITER', 'COOK', 'SUPERADMIN')
                         .required(),
                 }),
             },

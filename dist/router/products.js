@@ -21,6 +21,7 @@ class ProductsController extends _1.default {
         this.router.get('/products/:id', this.getOneModel);
         this.router.post('/products', (0, express_validation_1.validate)(this.validation.getValidationSchema()), this.postModel);
         this.router.patch('/products/:id', (0, express_validation_1.validate)(this.validation.getValidationSchema()), this.patchModel);
+        this.router.put('/products/:id', (0, express_validation_1.validate)(this.validation.getValidationSchema()), this.putModel);
         this.router.delete('/products/:id', this.deleteModel);
     }
 }

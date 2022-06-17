@@ -2,8 +2,8 @@ import { Joi } from 'express-validation'
 import { Models } from '../interfaces/Models'
 
 export default class Validation {
-  modelName: Models
-  validationShema = {
+  private modelName: Models
+  private readonly validationShema = {
     User: {
       body: Joi.object({
         email: Joi.string()

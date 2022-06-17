@@ -19,6 +19,7 @@ export default class ProductsController extends BaseController {
     this.router.get('/products/:id', this.getOneModel)
     this.router.post('/products', validate(this.validation.getValidationSchema()), this.postModel)
     this.router.patch('/products/:id', validate(this.validation.getValidationSchema()), this.patchModel)
+    this.router.put('/products/:id', validate(this.validation.getValidationSchema()), this.putModel)
     this.router.delete('/products/:id', this.deleteModel)
   }
 }
